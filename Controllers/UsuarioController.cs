@@ -26,7 +26,9 @@ namespace ProjetoBA.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View("Error!");
+            return View("Index");
         }
+
+        public IActionResult
     }
 }
