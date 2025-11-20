@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace ProjetoBA-master.Controllers
+namespace ProjetoBA.Controllers
 {
     [Route("[controller]")]
     public class UsuarioController : Controller
