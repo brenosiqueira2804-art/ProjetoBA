@@ -15,10 +15,5 @@ namespace ProjetoBA.Controllers
             return View();
         }
         
-public class LoginViewModel
-    {
-
-    }
-
     }
 }
