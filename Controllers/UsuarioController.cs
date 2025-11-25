@@ -29,6 +29,7 @@ namespace ProjetoBA.Controllers
             return View("Index");
         }
 
-        public IActionResult
+
+
     }
 }
