@@ -8,13 +8,17 @@ using Microsoft.Extensions.Logging;
 
 namespace ProjetoBA.Controllers
 {
-    [Route("[controller]")]
     public class LoginController : Controller
     {
-
         public IActionResult Index()
         {
             return View();
         }
+        
+public class LoginViewModel
+    {
+
+    }
+
     }
 }
