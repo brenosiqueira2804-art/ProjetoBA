@@ -13,19 +13,21 @@
                     <p class="mb-4">Este espaço é exclusivo para colaboradores da LOGTEC.
                      Para acessar os recursos internos e continuar suas atividades, realize seu login abaixo.
                      Digite seu e-mail corporativo e senha nos campos indicados e clique em Entrar para prosseguir.</p>
-                    <form action="#" method="post">
+                    <form  asp-action="Logar" asp-controller="Login" method="post">
                         <div class="form-group first">
                             <label for="username">E-mail</label>
-                            <input required type="email" class="form-control" placeholder="E-mail" id="username">
+                            <input required type="email" class="form-control" placeholder="E-mail" name="email">
                         </div>
                         <div class="form-group last mb-3">
                             <label for="password">Senha</label>
-                            <input required type="password" class="form-control" placeholder="Digite sua senha" id="password">
+                            <input required type="password" class="form-control" placeholder="Digite sua senha" name="password">
                         </div>
 
-                        <a href=""><input type="submit" value="Log In" class="btn btn-block btn-primary"></a>
+                        <input type="submit" value="Log In" class="btn btn-block btn-primary">
 
                     </form>
+
+                    <span class="fw-semibold text-red fs-2">@TempData["ErrorMessage"]</span>
                 </div>
             </div>
         </div>
