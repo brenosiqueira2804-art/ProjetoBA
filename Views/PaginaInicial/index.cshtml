@@ -1,44 +1,53 @@
-@page
-{
-ViewData["Title"] = "Bem Vindo Andreia";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Bem-vinda ao Sistema LogTec</h1>
-    <p>Selecione uma das opções abaixo para começar a gerenciar.</p>
-    <hr />
+<div class="jumbotron">
+    <h1 class="display-4">Bem-vindo ao Sistema Logtec!</h1>
+    <p class="lead">Gerencie seu sistema.</p>
+    <hr class="my-4">
 </div>
 
-<div class="container">
-    <div class="row justify-content-center">
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <a href="/Clientes" class="btn btn-primary btn-lg btn-block">
-                <i class="fas fa-users"></i>
-                CLIENTES
-                <a href="/Clientes" class="btn btn-primary btn-lg btn-block"></a>
-            </a>
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">📦 Gerenciar Estoque</h5>
+                <p class="card-text">Visualize, adicione ou remova itens do seu inventário.</p>
+                <a href="#" class="btn btn-sm btn-outline-secondary">Acessar</a>
+            </div>
         </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <a href="/Pedidos" class="btn btn-success btn-lg btn-block">
-                <i class="fas fa-shopping-cart"></i>
-                PEDIDOS
-                <a href="/Pedido" class="btn btn-primary btn-lg btn-block"></a>
-            </a>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">🚚 Acompanhar Entregas</h5>
+                <p class="card-text">Monitore o status de todos os transportes em andamento.</p>
+                <a href="#" class="btn btn-sm btn-outline-secondary">Acessar</a>
+            </div>
         </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-            <a href="/Produtos" class="btn btn-info btn-lg btn-block">
-                <i class="fas fa-box-open"></i>
-                PRODUTOS
-                <a href="/Produto" class="btn btn-primary btn-lg btn-block"></a>
-            </a>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">📊 Relatórios Diários</h5>
+                <p class="card-text">Gere e visualize dados importantes sobre a operação.</p>
+                <a href="#" class="btn btn-sm btn-outline-secondary">Acessar</a>
+            </div>
         </div>
-
-        <a href="/Clientes" class="btn btn-primary btn-lg btn-block">CLIENTES</a>
-
-        <a href="/Pedidos" class="btn btn-success btn-lg btn-block">Cadastrar</a>
-
     </div>
 </div>
+
+
+<style>
+    .jumbotron {
+        padding: 4rem 2rem;
+        margin-bottom: 2rem;
+        background-color: #e9ecef;
+        /* Cor de fundo suave */
+        border-radius: .3rem;
+    }
+
+    .footer {
+        padding: 1rem 0;
+        background-color: #f8f9fa;
+        /* Cor de fundo do rodapé */
+        border-top: 1px solid #dee2e6;
+    }
+</style>

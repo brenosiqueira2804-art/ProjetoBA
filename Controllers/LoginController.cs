@@ -35,7 +35,7 @@ namespace ProjetoBA.Controllers
                 {
                     if (usuario.Senha == password)
                     {
-                        return RedirectToAction("Index", "PaginaInicial");
+                        return RedirectToAction("Index", "Home");
                     }
                     else
                     {
