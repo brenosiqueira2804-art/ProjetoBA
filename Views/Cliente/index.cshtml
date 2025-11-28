@@ -1,47 +1,106 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProjetoBA - GitHub Clone</title>
-    <link rel="stylesheet" href="styles.css">
-    </head>
-<body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="repo-list">
-                <h3>Top repositories</h3>
-                <ul>
-                    <li class="active">brenosiqueira2804-art/ProjetoBA</li>
-                    <li>Allanbrazzy/cb</li>
-                    </ul>
-            </div>
-        </aside>
+@page
+@{
 
-        <main class="main-content">
-            <header class="repo-header">
-                <h1>
-                    <span class="icon">📁</span>
-                    ProjetoBA
-                    <span class="public-badge">Public</span>
-                </h1>
-                </header>
+    ViewData["Title"] = "Gerenciador de Clientes";
+}
 
-            <div class="file-list">
-                <div class="commit-summary">
-                    </div>
-                <div class="file-item file-header">
-                    <span class="file-name">Nome do Arquivo/Pasta</span>
-                    <span class="commit-message">Mensagem do Último Commit</span>
-                    <span class="commit-date">Idade do Commit</span>
-                </div>
-                <div class="file-item">
-                    <span class="file-name">Controllers</span>
-                    <span class="commit-message">Subindo atualizações do projeto</span>
-                    <span class="commit-date">37 minutes ago</span>
-                </div>
-                </div>
-        </main>
+<div class="text-center">
+    <h1 class="display-4">Gerenciador dos Clientes</h1>
+    <p>Selecione uma das opções abaixo para começar a gerenciar.</p>
+    <hr />
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="/Clientes" class="btn btn-primary btn-lg btn-block">
+                <i class="fas fa-users"></i>
+                Clientes
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="/Pedidos" class="btn btn-success btn-lg btn-block">
+                <i class="fas fa-shopping-cart"></i>
+                Cadastrar
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="/Produtos" class="btn btn-info btn-lg btn-block">
+                <i class="fas fa-box-open"></i>
+                Atualizar
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="/Produtos" class="btn btn-info btn-lg btn-block">
+                <i class="fas fa-box-open"></i>
+                Deletar
+            </a>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4">
+            <a href="/PaginaInicial" class="btn btn-info btn-lg btn-block">
+                <i class="fas fa-box-open"></i>
+                Voltar
+            </a>
+        </div>
+
     </div>
-</body>
-</html>
+</div>
+
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('/images/jpeg.jpg');"></div>
+    <div class="contents order-2 order-md-1">
+
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-7">
+                    <h3> Gerenciador dos Clientes <strong>LogTec</strong></h3>
+                    <form asp-action="Logar" asp-controller="Login" method="post">
+                        <div class="form-group last mb-3">
+                            <label for="password">Clientes</label>
+                            <input required type="password" class="form-control" placeholder="Digite sua senha"
+                                name="password">
+                        </div>
+
+                        <div class="form-group last mb-3">
+                            <label for="password">Cadastrar</label>
+                            <input required type="password" class="form-control" placeholder="Digite sua senha"
+                                name="password">
+                        </div>
+
+                        <div class="form-group last mb-3">
+                            <label for="password">Atualizar</label>
+                            <input required type="password" class="form-control" placeholder="Digite sua senha"
+                                name="password">
+                        </div>
+
+                        <div class="form-group last mb-3">
+                            <label for="password">Deletar</label>
+                            <input required type="password" class="form-control" placeholder="Digite sua senha"
+                                name="password">
+                        </div>
+
+                        <div class="form-group last mb-3">
+                            <label for="password">Volatr</label>
+                            <input required type="password" class="form-control" placeholder="Digite sua senha"
+                                name="password">
+                        </div>
+
+                        <input type="submit" value="Log In" class="btn btn-block btn-primary">
+
+                    </form>
+
+                    <span class="fw-semibold text-red fs-2">@TempData["ErrorMessage"]</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
