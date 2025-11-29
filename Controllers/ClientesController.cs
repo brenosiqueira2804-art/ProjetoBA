@@ -1,6 +1,10 @@
+
 using Microsoft.AspNetCore.Mvc;
 
+namespace ProjetoBA.Controllers;
+
 // Este nome (Cliente) é o que corresponde à rota '/Clientes'
+[Route("[controller]")]
 public class ClienteController : Controller
 {
     // Este método (Action) é o que corresponde à rota base '/Clientes'

@@ -1,0 +1,128 @@
+@page 
+    <style>
+        .jumbotron {
+            padding: 4rem 2rem;
+            margin-bottom: 2rem;
+            background-color: #e9ecef; /* Cor de fundo suave */
+            border-radius: .3rem;
+        }
+        .footer {
+            padding: 1rem 0;
+            background-color: #f8f9fa; 
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+    <!-- 1. Barra de Navegação (Navbar) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <!-- Link para a própria página inicial -->
+            <a class="navbar-brand" href="index.html">**Logtec**</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Link para a página de Cadastro -->
+                        <a class="nav-link" href="cadastrar.html">Cadastro</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <button class="btn btn-outline-light" type="button">Sair</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. Conteúdo Principal -->
+    <main class="container mt-4 mb-5">
+        
+        <!-- Jumbotron / Hero -->
+        <div class="jumbotron">
+            <h1 class="display-4">Bem-vindo ao Sistema Logtec!</h1>
+            <p class="lead">Gerencie seus pedidos, estoque e transporte de forma eficiente e integrada.</p>
+            <hr class="my-4">
+            <p>Use os cards para acessar as funções principais ou veja a lista de clientes abaixo.</p>
+            <!-- O botão de Novo Pedido também pode ser um link direto para Cadastro (se for o caso) -->
+            <a class="btn btn-primary btn-lg" href="cadastrar.html" role="button">Novo Cadastro</a>
+        </div>
+
+        <!-- Cards de Acesso Rápido -->
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-secondary">
+                    <div class="card-body">
+                        <h5 class="card-title"> 👤 CADASTRAR</h5>
+                        <p class="card-text">Cadastrar clientes no sistema.</p>
+                        <!-- Link para a página de Cadastro -->
+                        <a href="cadastrar.html" class="btn btn-sm btn-outline-success">Acessar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-secondary">
+                    <div class="card-body">
+                        <h5 class="card-title"> 📝 ATUALIZAR</h5>
+                        <p class="card-text">Atualize os dados ou processos.</p>
+                        <a href="atualizar.html" class="btn btn-sm btn-outline-warning">Acessar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm border-secondary">
+                    <div class="card-body">
+                        <h5 class="card-title"> 🗑️ DELETAR</h5>
+                        <p class="card-text">Deletar informações ou cadastros.</p>
+                        <a href="deletar.html" class="btn btn-sm btn-outline-danger">Acessar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tabela de Clientes -->
+        <h2 class="mt-5 mb-3">Lista de Clientes Cadastrados</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle shadow-sm">
+                <thead>
+                    <tr class="table-primary">
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome do Cliente</th>
+                        <th scope="col">CPF/CNPJ</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Última Atualização</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">101</th>
+                        <td>Transportadora Ágil LTDA</td>
+                        <td>12.345.678/0001-90</td>
+                        <td><span class="badge bg-success">Ativo</span></td>
+                        <td>25/11/2025</td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-info text-white me-1">Ver</a>
+                            <a href="#" class="btn btn-sm btn-warning me-1">Editar</a>
+                            <button class="btn btn-sm btn-danger">Excluir</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">102</th>
+                        <td>Distribuidora Oeste S.A.</td>
+                        <td>98.765.432/0001-00</td>
+                        <td><span class="badge bg-warning text-dark">Pendente</span></td>
+                        <td>18/11/2025</td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-info text-white me-1">Ver</a>
+                            <a href="#" class="btn btn-sm btn-warning me-1">Editar</a>
+                            <button class="btn btn-sm btn-danger">Excluir</button>
+                        </td>
+                    </tr>
+                    <!-- Mais linhas seriam carregadas aqui do seu sistema -->
+                </tbody>
+            </table>
+        </div>
+    </main>
