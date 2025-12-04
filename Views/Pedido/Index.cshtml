@@ -1,0 +1,210 @@
+@*  
+<main class="container mt-4 mb-5">
+
+    <!-- Card do Formulário -->
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">📄 Novo Pedido</h3>
+        </div>
+
+        <div class="card-body">
+            <form asp-action="SalvarPedido" asp-controller="Pedido">
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="data" class="form-label">Data do Pedido</label>
+                        <input type="date" class="form-control" id="data" required>
+                    </div>
+
+                    <div class="col-md-8">
+                        <label for="cliente" class="form-label">Cliente</label>
+                        <select class="form-select" required name="ClienteId">
+                            @if (ViewBag.ListaClientes != null && ViewBag.ListaClientes.Count > 0)
+                            {
+                                @foreach (Cliente cliente in ViewBag.ListaClientes)
+                                {
+                                    <option value="@cliente.Id">@cliente.Razaosocial</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+
+                    <div class="col-md-4">
+                        <label class="form-label">Quantidade</label>
+                        <input type="text" class="form-control" name="Quantidade" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Produto</label>
+                        <select class="form-select" required name="ProdutoId">
+                            @if (ViewBag.ListaProdutos != null && ViewBag.ListaProdutos.Count > 0)
+                            {
+                                @foreach (Produto produto in ViewBag.ListaProdutos)
+                                {
+                                    <option value="@produto.Id">@produto.Nomeproduto</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Endereço de Entrega</label>
+                    <input type="text" class="form-control" required>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success btn-lg me-2">Salvar Pedido</button>
+                    <a href="index.html" class="btn btn-secondary btn-lg">Cancelar</a>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- Tabela de Pedidos -->
+    <div class="card shadow-sm mt-4">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">Lista de Pedidos Cadastrados</h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Data</th>
+                        <th>Cliente</th>
+                        <th>Produto</th>
+                        <th>Qtd</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.ListaPedidos != null && ViewBag.ListaPedidos.Count > 0)
+                    {
+                        @foreach (Pedido pedido in ViewBag.ListaPedidos)
+                        {
+                            <tr>
+                                <td>@pedido.Id.ToString()</td>
+                                <td>20/12/2025</td>
+                                <td>João Silva</td>
+                                <td>@pedido.Produto?.Nomeproduto</td>
+                                <td>@pedido.Quantidade?.ToString()</td>
+                                <td><span class="badge bg-success">Concluído</span></td>
+                                <td>
+                                    <button class="btn btn-warning btn-sm">Editar</button>
+                                    <button class="btn btn-danger btn-sm">Excluir</button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</main>
+
+<style>
+    body {
+        background-color: #f3efe7;
+    }
+
+    .footer {
+        padding: 1rem 0;
+        background-color: #f8f9fa;
+        border-top: 1px solid #dee2e6;
+    }
+</style>
+
+*@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logtec - Cadastro dos Clientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+ 
+    <style>
+        .footer {
+            padding: 1rem 0;
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+        }
+    </style>
+</head>
+ 
+<body>
+ 
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.cshtml">Logtec</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="d-flex">
+                    <button class="btn btn-outline-light" type="button">Sair</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+ 
+    <main class="container mt-4 mb-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-success text-white">
+                <h3 class="mb-0">👤 Novo Cadastro de Cliente</h3>
+            </div>
+            <div class="card-body">
+                <form action="salvar_cliente.php" method="POST">
+ 
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <label for="nome" class="form-label">Nome Completo / Razão Social</label>
+                            <input type="text" class="form-control" id="nome" name="nome" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="tipo" class="form-label">Tipo de Cadastro</label>
+                            <select class="form-select" id="tipo" name="tipo" required>
+                                <option value="" disabled selected>Selecione...</option>
+                                <option value="PF">Pessoa Física (CPF)</option>
+                                <option value="PJ">Pessoa Jurídica (CNPJ)</option>
+                            </select>
+                        </div>
+                    </div>
+ 
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="documento" class="form-label">CPF / CNPJ</label>
+                            <input type="text" class="form-control" id="documento" name="documento"
+                                placeholder="Apenas números" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="telefone" class="form-label">Telefone</label>
+                            <input type="tel" class="form-control" id="telefone" name="telefone">
+                    <div class="row mb-3">
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success btn-lg me-2">Salvar Cliente</button>
+                        <a href="index.html" class="btn btn-secondary btn-lg">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+ 
+</body>

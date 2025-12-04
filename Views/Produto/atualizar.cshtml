@@ -1,0 +1,43 @@
+@page
+@model ProjetoBA.Models.Produto
+
+<h2 class="mb-4">📋 Produtos Cadastrados</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Estoque</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+            @if (ViewBag.Produtos != null && ViewBag.Produtos.Any())
+            {
+                foreach (var item in ViewBag.Produtos)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Nome</td>
+                        <td>R$ @item.Preco</td>
+                        <td>@item.Estoque</td>
+                        <td>
+                            <a asp-page="./Editar" asp-route-id="@item.Id" class="btn btn-sm btn-info">Editar</a> |
+                            <a asp-page="./Detalhes" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Detalhes</a> |
+                            <a asp-page="./Excluir" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center text-muted">Nenhum produto encontrado.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

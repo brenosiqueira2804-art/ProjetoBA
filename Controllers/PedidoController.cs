@@ -1,0 +1,49 @@
+
+using Microsoft.AspNetCore.Mvc;
+using ProjetoBA.Models;
+using ProjetoBA.Contexts;
+using Microsoft.EntityFrameworkCore; // se sua pasta do Context se chama Data
+
+namespace ProjetoBA.Controllers
+{
+    [Route("[controller]")]
+    public class PedidoController : Controller
+    {
+        ProjetoContext _context = new ProjetoContext();
+
+        // Ação que carrega a página cliente
+        public IActionResult Index()
+        {
+            // Carregar a lista de clientes para cadastro
+            var listaClientes = _context.Clientes.ToList();
+
+            ViewBag.ListaClientes = listaClientes;
+
+            // Carregando a lista de produtos
+            var listaProdutos = _context.Produtos.ToList();
+
+            ViewBag.ListaProdutos = listaProdutos;
+
+            // Carregando a lista de pedidos original
+            // var listaPedidos = _context.Pedidos.Include("Produto").Include("Usuario").ToList();
+            // var listaPedidos = _context.Pedidos.ToList();
+
+            // ViewBag.ListaPedidos = listaPedidos;
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SalvarPedido(Pedido pedido)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Pedidos.Add(pedido);
+
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+    }
+}
