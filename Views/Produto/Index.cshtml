@@ -1,0 +1,110 @@
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+<div class="jumbotron text-center bg-light shadow-sm welcome-banner">
+    <h1 class="display-4 fw-bold">Seja bem vindo ao catálogo Logtec!</h1>
+    <p class="lead">Confira abaixo os produtos disponíveis atualmente.</p>
+    <hr class="my-4">
+</div>
+
+<div class="container my-4">
+    <h2 class="mb-4 text-center fw-bold section-title">Produtos Disponíveis</h2>
+
+    <div class="row g-4">
+
+        @if (ViewBag.ListaProdutos != null && ViewBag.ListaProdutos.Count > 0)
+        {
+            @foreach (Produto produto in ViewBag.ListaProdutos)
+            {
+                <div class="col-md-3 col-sm-6">
+                    <div class="card product-card shadow-sm h-100">
+                        <div class="img-container">
+                            <img src="./images/@produto.Imagem" class="card-img-top product-image" alt="@produto.Nomeproduto">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title product-title">@produto.Nomeproduto</h5>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+    </div>
+</div>
+
+<style>
+    /* Banner */
+    .welcome-banner {
+        background: linear-gradient(135deg, #0d6832, #0d6832);
+        padding: 3rem 2rem;
+        border-radius: 10px;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Título da sessão */
+  .section-title {
+    color: #0d6832;
+    font-size: 3rem;
+    font-weight: bold;
+
+    position: sticky;
+    top: 0;           /* quando chegar no topo, gruda */
+    left: 0;
+    z-index: 50;
+
+    background: white;
+    padding: 10px 15px;
+    
+
+    animation: slideDown 0.8s ease;
+}
+
+    /* Card do produto */
+    .product-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Container da imagem */
+    .img-container {
+        overflow: hidden;
+        height: 180px;
+        border-bottom: 1px solid #eee;
+    }
+
+    /* Imagem */
+    .product-image {
+        width: 100%;
+        height: 200px;
+        /* Altura fixa para manter padrão */
+        object-fit: contain;
+        /* Mantém proporção SEM distorcer */
+        object-position: center;
+        /* Mantém a imagem centralizada */
+        padding: 10px;
+        /* Dá espaço para imagens quadradas */
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    /* Efeito ao passar o mouse */
+    .product-image:hover {
+        transform: scale(1.07);
+        filter: brightness(1.15);
+    }
+
+    /* Efeito zoom suave nas imagens */
+    .product-image:hover {
+        transform: scale(1.15);
+    }
+
+    /* Título do card */
+    .product-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #000000;
+    }
+</style>

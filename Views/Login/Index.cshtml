@@ -1,0 +1,33 @@
+@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('/images/jpeg.jpg');"></div>
+    <div class="contents order-2 order-md-1">
+
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-7">
+                    <h3>Bem-vindo ao Portal de Login da <strong>LogTec</strong></h3>
+                    <form asp-action="Logar" asp-controller="Login" method="post">
+                        <div class="form-group first">
+                            <label for="username">E-mail</label>
+                            <input required type="email" class="form-control" placeholder="E-mail" name="email">
+                        </div>
+                        <div class="form-group last mb-3">
+                            <label for="password">Senha</label>
+                            <input required type="password" class="form-control" placeholder="Digite sua senha"
+                                name="password">
+                        </div>
+
+                        <input type="submit" value="Log In" class="btn btn-block btn-primary">
+
+                    </form>
+
+                    <span class="fw-semibold text-red fs-2">@TempData["ErrorMessage"]</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
