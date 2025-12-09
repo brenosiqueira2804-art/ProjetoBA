@@ -11,7 +11,7 @@ public class ClienteController : Controller
     // A convenção no ASP.NET Core MVC é usar "Index" como a Action principal.
     public IActionResult Index()
     {
-        
+
         // 1. **Executar a Lógica C# (Model)**:
         // Aqui você chamaria o código C# para buscar a lista de clientes no banco de dados.
         // Exemplo: List<Cliente> listaClientes = _repositorio.ObterTodosClientes();
@@ -30,3 +30,4 @@ public class ClienteController : Controller
         return View(); // Isso procurará o arquivo "Cadastrar.cshtml" na pasta Views/Cliente
     }
 }
+
