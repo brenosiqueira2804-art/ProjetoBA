@@ -227,4 +227,22 @@ table {
 /* ==================== RESPONSIVIDADE ==================== */
 
 }
+
+
+body {
+    background-image: url('/img/imagem-de-fundo-do-site.png'); /* caminho da imagem */
+    background-size: cover;        /* preenche toda a tela */
+    background-repeat: no-repeat;  /* não repete */
+    background-position: center;   /* centraliza */
+    background-attachment: fixed;  /* fixa o fundo ao rolar */
+    opacity: 1;
+}
+
+/* Garantir que o conteúdo fique legível */
+.container, main, section, div, .jumbotron {
+    background-color: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+    padding: 15px;
+}
 </style>

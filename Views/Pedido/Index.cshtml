@@ -149,9 +149,31 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-success px-4 me-2 fw-bold shadow-sm">
-                            Salvar<br>Cliente
-                        </button>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Valor do Pedido</label>
+                                <input type="text" class="form-control" id="valorPedido" placeholder="R$ 0,00">
+                            </div>
+                        </div>
+
+                        <script>
+                            const campo = document.getElementById('valorPedido');
+
+                            campo.addEventListener('input', function () {
+                                let valor = campo.value.replace(/\D/g, "");
+                                valor = (valor / 100).toFixed(2).split(".");
+                                valor[0] = valor[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                                campo.value = "R$ " + valor.join(",");
+                            });
+                        </script>
+
+                        <a asp-controller="Pedido" asp-action="Index" class="btn btn-primary px-4 me-2 fw-bold shadow-sm">
+                            Salvar<br>Pedido
+                        </a>
+
+                        @* <button type="submit" class="btn btn-success px-4 me-2 fw-bold shadow-sm">
+                            Salvar<br>Pedido
+                        </button> *@
 
                         <button type="button" class="btn btn-secondary px-4 fw-bold shadow-sm">
                             Cancelar
@@ -165,7 +187,7 @@
 
         <!-- ==================== COLUNA DIREITA - TABELA ==================== -->
         <div class="col-md-6">
-            <div class="card shadow-lg border-0" style="border-radius: 15px; height: 100%;">
+            <div class="card shadow-lg border-0" style="border-radius: 15px;">
                 <div class="card-header text-white">
                     <h4 class="mb-0"><i class="bi bi-list-check me-2"></i>Lista de Pedidos</h4>
                 </div>
@@ -183,18 +205,90 @@
                         </thead>
 
                         <tbody>
-                            <tr><td>001</td><td>Maria Silva</td><td>12/01/2025</td><td>R$ 150,00</td><td><span class="badge bg-primary">Feito</span></td></tr>
-                            <tr><td>002</td><td>Carlos Alberto</td><td>13/01/2025</td><td>R$ 299,99</td><td><span class="badge bg-primary">Feito</span></td></tr>
-                            <tr><td>003</td><td>Rafaela Sousa</td><td>14/01/2025</td><td>R$ 510,00</td><td><span class="badge bg-primary">Feito</span></td></tr>
-                            <tr><td>004</td><td>João Pedro</td><td>10/01/2025</td><td>R$ 85,90</td><td><span class="badge bg-warning text-dark">Em Trânsito</span></td></tr>
-                            <tr><td>005</td><td>Lorena Matos</td><td>11/01/2025</td><td>R$ 230,00</td><td><span class="badge bg-warning text-dark">Em Trânsito</span></td></tr>
-                            <tr><td>006</td><td>Fernando Oliveira</td><td>05/01/2025</td><td>R$ 430,00</td><td><span class="badge bg-success">Concluído</span></td></tr>
-                            <tr><td>007</td><td>Juliana Rocha</td><td>06/01/2025</td><td>R$ 99,90</td><td><span class="badge bg-success">Concluído</span></td></tr>
-                            <tr><td>008</td><td>Pedro Henrique</td><td>07/01/2025</td><td>R$ 180,00</td><td><span class="badge bg-danger">Cancelado</span></td></tr>
-                            <tr><td>009</td><td>Patrícia Xavier</td><td>09/01/2025</td><td>R$ 540,00</td><td><span class="badge bg-danger">Cancelado</span></td></tr>
-                            <tr><td>010</td><td>Lucas Almeida</td><td>15/01/2025</td><td>R$ 1.200,00</td><td><span class="badge bg-primary">Feito</span></td></tr>
-                            <tr><td>011</td><td>Ana Beatriz</td><td>15/01/2025</td><td>R$ 320,00</td><td><span class="badge bg-warning text-dark">Em Trânsito</span></td></tr>
-                            <tr><td>012</td><td>Diego Martins</td><td>16/01/2025</td><td>R$ 280,00</td><td><span class="badge bg-success">Concluído</span></td></tr>
+                            <tr>
+                                <td>001</td>
+                                <td>Maria Silva</td>
+                                <td>12/01/2025</td>
+                                <td>R$ 150,00</td>
+                                <td><span class="badge bg-primary">Feito</span></td>
+                            </tr>
+                            <tr>
+                                <td>002</td>
+                                <td>Carlos Alberto</td>
+                                <td>13/01/2025</td>
+                                <td>R$ 299,99</td>
+                                <td><span class="badge bg-primary">Feito</span></td>
+                            </tr>
+                            <tr>
+                                <td>003</td>
+                                <td>Rafaela Sousa</td>
+                                <td>14/01/2025</td>
+                                <td>R$ 510,00</td>
+                                <td><span class="badge bg-primary">Feito</span></td>
+                            </tr>
+                            <tr>
+                                <td>004</td>
+                                <td>João Pedro</td>
+                                <td>10/01/2025</td>
+                                <td>R$ 85,90</td>
+                                <td><span class="badge bg-warning text-dark">Em Trânsito</span></td>
+                            </tr>
+                            <tr>
+                                <td>005</td>
+                                <td>Lorena Matos</td>
+                                <td>11/01/2025</td>
+                                <td>R$ 230,00</td>
+                                <td><span class="badge bg-warning text-dark">Em Trânsito</span></td>
+                            </tr>
+                            <tr>
+                                <td>006</td>
+                                <td>Fernando Oliveira</td>
+                                <td>05/01/2025</td>
+                                <td>R$ 430,00</td>
+                                <td><span class="badge bg-success">Concluído</span></td>
+                            </tr>
+                            <tr>
+                                <td>007</td>
+                                <td>Juliana Rocha</td>
+                                <td>06/01/2025</td>
+                                <td>R$ 99,90</td>
+                                <td><span class="badge bg-success">Concluído</span></td>
+                            </tr>
+                            <tr>
+                                <td>008</td>
+                                <td>Pedro Henrique</td>
+                                <td>07/01/2025</td>
+                                <td>R$ 180,00</td>
+                                <td><span class="badge bg-danger">Cancelado</span></td>
+                            </tr>
+                            <tr>
+                                <td>009</td>
+                                <td>Patrícia Xavier</td>
+                                <td>09/01/2025</td>
+                                <td>R$ 540,00</td>
+                                <td><span class="badge bg-danger">Cancelado</span></td>
+                            </tr>
+                            <tr>
+                                <td>010</td>
+                                <td>Lucas Almeida</td>
+                                <td>15/01/2025</td>
+                                <td>R$ 1.200,00</td>
+                                <td><span class="badge bg-primary">Feito</span></td>
+                            </tr>
+                            <tr>
+                                <td>011</td>
+                                <td>Ana Beatriz</td>
+                                <td>15/01/2025</td>
+                                <td>R$ 320,00</td>
+                                <td><span class="badge bg-warning text-dark">Em Trânsito</span></td>
+                            </tr>
+                            <tr>
+                                <td>012</td>
+                                <td>Diego Martins</td>
+                                <td>16/01/2025</td>
+                                <td>R$ 280,00</td>
+                                <td><span class="badge bg-success">Concluído</span></td>
+                            </tr>
                         </tbody>
 
                     </table>

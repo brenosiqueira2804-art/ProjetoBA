@@ -89,9 +89,15 @@ public partial class ProjetoContext : DbContext
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("codpedido");
+            entity.Property(e => e.DataPedido).HasColumnType("datetime");
             entity.Property(e => e.ProdutoId).HasColumnName("Produto_id");
             entity.Property(e => e.Quantidade).HasColumnName("quantidade");
+            entity.Property(e => e.Status)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .IsFixedLength();
             entity.Property(e => e.UsuarioId).HasColumnName("Usuario_id");
+            entity.Property(e => e.Valor).HasColumnType("decimal(10, 2)");
 
             entity.HasOne(d => d.Cliente).WithMany(p => p.Pedidos)
                 .HasForeignKey(d => d.ClienteId)
