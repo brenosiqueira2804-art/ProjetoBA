@@ -105,6 +105,17 @@
 
                     <form>
 
+                        <div class="form-control">
+                            <select class="form-select" name="ClienteId">
+                                <option>Selecione um Cliente</option>
+
+                                @foreach (Cliente cliente in ViewBag.ListaCliente)
+                                {
+                                    <option value="@cliente.Id">@cliente.UsuarioId</option>
+                                }
+                            </select>
+                        </div>
+
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Nome Completo / Razão Social</label>
@@ -140,8 +151,8 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label fw-semibold">Tipo de Pedido</label>
-                                <select class="form-select">
+                                <label class="form-label fw-semibold">Lista dos clientes</label>
+                                <select class="form-select" name="cliente">
                                     <option selected>Selecione...</option>
                                     <option value="1">Atacado</option>
                                     <option value="2">Único</option>
@@ -152,7 +163,8 @@
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Valor do Pedido</label>
-                                <input type="text" class="form-control" id="valorPedido" placeholder="R$ 0,00">
+                                <input type="text" class="form-control" name="Valor" id="valorPedido"
+                                    placeholder="R$ 0,00">
                             </div>
                         </div>
 
@@ -167,7 +179,8 @@
                             });
                         </script>
 
-                        <a asp-controller="Pedido" asp-action="Index" class="btn btn-primary px-4 me-2 fw-bold shadow-sm">
+                        <a asp-controller="Pedido" asp-action="Index"
+                            class="btn btn-primary px-4 me-2 fw-bold shadow-sm">
                             Salvar<br>Pedido
                         </a>
 
