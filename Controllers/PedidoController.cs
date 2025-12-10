@@ -29,6 +29,10 @@ namespace ProjetoBA.Controllers
             // var listaPedidos = _context.Pedidos.ToList();
 
             // ViewBag.ListaPedidos = listaPedidos;
+            // Passando também a lista de equipes para montar o meu select
+            var listaPedidos = _context.Pedidos.ToList();
+
+            ViewBag.ListaEquipes = listaPedidos;
 
             return View();
         }
@@ -38,6 +42,9 @@ namespace ProjetoBA.Controllers
         {
             if (ModelState.IsValid)
             {
+                pedido.DataPedido = new DateTime();
+                pedido.Status = "F";
+
                 _context.Pedidos.Add(pedido);
 
                 _context.SaveChanges();

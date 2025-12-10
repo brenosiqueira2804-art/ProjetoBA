@@ -31,10 +31,13 @@ public class ClienteController : Controller
     // Exemplo de uma Action para "Cadastrar" (se o botão CadastrarClientes apontar para '/Clientes/Cadastrar')
     public IActionResult Cadastrar(Cliente cliente)
     {
+
+        cliente.UsuarioId = int.Parse(HttpContext.Session.GetString("Usuario"));
+
         context.Add(cliente);
 
         context.SaveChanges();
         
-        return View(); // Isso procurará o arquivo "Cadastrar.cshtml" na pasta Views/Cliente
+        return RedirectToAction("Index"); // Isso procurará o arquivo "Cadastrar.cshtml" na pasta Views/Cliente
     }
 }

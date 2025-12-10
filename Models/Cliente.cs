@@ -7,9 +7,9 @@ public partial class Cliente
 {
     public int Id { get; set; }
 
-    public int? UsuarioId { get; set; }
+    public int UsuarioId { get; set; }
 
-    public string? Email { get; set; }
+    public string Email { get; set; } = null!;
 
     public string? Codcliente { get; set; }
 

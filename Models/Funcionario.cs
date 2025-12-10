@@ -7,9 +7,9 @@ public partial class Funcionario
 {
     public int Id { get; set; }
 
-    public bool? Admin { get; set; }
+    public bool Admin { get; set; }
 
-    public int? UsuarioId { get; set; }
+    public int UsuarioId { get; set; }
 
-    public virtual Usuario? Usuario { get; set; }
+    public virtual Usuario Usuario { get; set; } = null!;
 }

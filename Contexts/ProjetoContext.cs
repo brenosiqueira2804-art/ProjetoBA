@@ -34,9 +34,9 @@ public partial class ProjetoContext : DbContext
     {
         modelBuilder.Entity<Cliente>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__cliente__3213E83F4320F194");
+            entity.HasKey(e => e.Id).HasName("PK__Cliente__3213E83F97431EF1");
 
-            entity.ToTable("cliente");
+            entity.ToTable("Cliente");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Cnpj)
@@ -57,12 +57,13 @@ public partial class ProjetoContext : DbContext
 
             entity.HasOne(d => d.Usuario).WithMany(p => p.Clientes)
                 .HasForeignKey(d => d.UsuarioId)
-                .HasConstraintName("FK__cliente__Usuario__114A936A");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Cliente__Usuario__3A81B327");
         });
 
         modelBuilder.Entity<Funcionario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Funciona__3213E83F33559A18");
+            entity.HasKey(e => e.Id).HasName("PK__Funciona__3213E83FA47EF0AE");
 
             entity.ToTable("Funcionario");
 
@@ -72,47 +73,60 @@ public partial class ProjetoContext : DbContext
 
             entity.HasOne(d => d.Usuario).WithMany(p => p.Funcionarios)
                 .HasForeignKey(d => d.UsuarioId)
-                .HasConstraintName("FK__Funcionar__Usuar__1F98B2C1");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Funcionar__Usuar__440B1D61");
         });
 
         modelBuilder.Entity<Pedido>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__pedido__3213E83F34C64A17");
+            entity.HasKey(e => e.Id).HasName("PK__Pedido__3213E83F813EFC57");
 
-            entity.ToTable("pedido");
+            entity.ToTable("Pedido");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.ClienteId).HasColumnName("cliente_id");
-            entity.Property(e => e.Codpedido).HasColumnName("codpedido");
-            entity.Property(e => e.ProdutoId).HasColumnName("Produto_id");
-            entity.Property(e => e.Quantidade)
-                .HasMaxLength(100)
+            entity.Property(e => e.Codpedido)
+                .HasMaxLength(10)
                 .IsUnicode(false)
-                .HasColumnName("quantidade");
+                .HasColumnName("codpedido");
+            entity.Property(e => e.DataPedido).HasColumnType("datetime");
+            entity.Property(e => e.ProdutoId).HasColumnName("Produto_id");
+            entity.Property(e => e.Quantidade).HasColumnName("quantidade");
+            entity.Property(e => e.Status)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .IsFixedLength();
             entity.Property(e => e.UsuarioId).HasColumnName("Usuario_id");
+            entity.Property(e => e.Valor).HasColumnType("decimal(10, 2)");
 
             entity.HasOne(d => d.Cliente).WithMany(p => p.Pedidos)
                 .HasForeignKey(d => d.ClienteId)
-                .HasConstraintName("FK__pedido__cliente___2BFE89A6");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Pedido__cliente___403A8C7D");
 
             entity.HasOne(d => d.Produto).WithMany(p => p.Pedidos)
                 .HasForeignKey(d => d.ProdutoId)
-                .HasConstraintName("FK__pedido__Produto___2CF2ADDF");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Pedido__Produto___412EB0B6");
 
             entity.HasOne(d => d.Usuario).WithMany(p => p.Pedidos)
                 .HasForeignKey(d => d.UsuarioId)
-                .HasConstraintName("FK__pedido__Usuario___2B0A656D");
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Pedido__Usuario___3F466844");
         });
 
         modelBuilder.Entity<Produto>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Produto__3213E83F1C8B9892");
+            entity.HasKey(e => e.Id).HasName("PK__Produto__3213E83FF2B14665");
 
             entity.ToTable("Produto");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.Imagem)
+                .HasMaxLength(255)
+                .IsUnicode(false);
             entity.Property(e => e.Nomeproduto)
-                .HasMaxLength(100)
+                .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("nomeproduto");
             entity.Property(e => e.Preco)
@@ -123,11 +137,11 @@ public partial class ProjetoContext : DbContext
 
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Usuario__3213E83F7B215044");
+            entity.HasKey(e => e.Id).HasName("PK__Usuario__3213E83F67DB0DAC");
 
             entity.ToTable("Usuario");
 
-            entity.HasIndex(e => e.Email, "UQ__Usuario__AB6E616464946FA1").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Usuario__AB6E616429BEC571").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Email)

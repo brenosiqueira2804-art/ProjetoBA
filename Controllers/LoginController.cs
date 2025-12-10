@@ -35,6 +35,8 @@ namespace ProjetoBA.Controllers
                 {
                     if (usuario.Senha == password)
                     {
+                        HttpContext.Session.SetString("Usuario", usuario.Id.ToString());
+
                         return RedirectToAction("Index", "Home");
                     }
                     else
