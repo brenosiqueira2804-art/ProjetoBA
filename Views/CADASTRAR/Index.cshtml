@@ -37,38 +37,29 @@
                 <h3 class="mb-0">👤 Novo Cadastro de Cliente</h3>
             </div>
             <div class="card-body">
-                <form action="salvar_cliente.php" method="POST">
-
+                <form  asp-action="Cadastrar" asp-controller="Cliente" method="POST">
                     <div class="row mb-3">
                         <div class="col-md-8">
-                            <label for="nome" class="form-label">Nome Completo / Razão Social</label>
-                            <input type="text" class="form-control" id="nome" name="nome" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="tipo" class="form-label">Tipo de Cadastro</label>
-                            <select class="form-select" id="tipo" name="tipo" required>
-                                <option value="" disabled selected>Selecione...</option>
-                                <option value="PF">Pessoa Física (CPF)</option>
-                                <option value="PJ">Pessoa Jurídica (CNPJ)</option>
-                            </select>
+                            <label for="Razaosocial" class="form-label">Razão Social</label>
+                            <input type="text" class="form-control" id="Razaosocial" name="Razaosocial" required>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="documento" class="form-label">CPF / CNPJ</label>
-                            <input type="text" class="form-control" id="documento" name="documento"
+                            <label for="Cnpj" class="form-label">CNPJ</label>
+                            <input type="text" class="form-control" id="Cnpj" name="Cnpj"
                                 placeholder="Apenas números" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="email" class="form-label">E-mail</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <label for="Email" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="Email" name="Email" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="telefone" class="form-label">Telefone</label>
-                            <input type="tel" class="form-control" id="telefone" name="telefone">
+                            <label for="Codcliente" class="form-label">Insira um código de identificacao</label>
+                            <input type="text" class="form-control" id="Codcliente" name="Codcliente">
                     <div class="row mb-3">
                     </div>
                     <div class="d-flex justify-content-end">
