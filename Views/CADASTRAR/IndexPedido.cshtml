@@ -1,0 +1,274 @@
+@page
+ 
+<!-- 2. Conteúdo Principal -->
+<main class="container mt-4 mb-5">
+ 
+    <!-- Jumbotron / Hero -->
+    <div class="jumbotron">
+        <form  asp-action="Cadastrar" asp-controller="Cliente" method="POST">
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <label for="Razaosocial" class="form-label">Razão Social</label>
+                            <input type="text" class="form-control" id="Razaosocial" name="Razaosocial" required>
+                        </div>
+                    </div>
+ 
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="Cnpj" class="form-label">CNPJ</label>
+                            <input type="text" maxlength="14" class="form-control" id="Cnpj" name="Cnpj"
+                                placeholder="Apenas números" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="Email" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="Email" name="Email" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="Codcliente" class="form-label">Insira um código de identificacao</label>
+                            <input type="text" maxlength="10" class="form-control" id="Codcliente" name="Codcliente">
+                    <div class="row mb-3">
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success btn-lg me-2">Salvar Pedido</button>
+                        <a href="index.html" class="btn btn-secondary btn-lg">Cancelar</a>
+                    </div>
+                </form>
+    </div>
+
+    <div class="jumbotron">
+        <form  asp-action="Cadastrar" asp-controller="Pedido" method="POST">
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <label for="Nome" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="Usuario" name="Usuario" required>
+                        </div>
+                    </div>
+ 
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="Cnpj" class="form-label">CNPJ</label>
+                            <input type="text" maxlength="14" class="form-control" id="Cnpj" name="Cnpj"
+                                placeholder="Apenas números" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="Email" class="form-label">E-mail</label>
+                            <input type="email" class="form-control" id="Email" name="Email" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="Codcliente" class="form-label">Insira um código de identificacao</label>
+                            <input type="text" maxlength="10" class="form-control" id="Codcliente" name="Codcliente">
+                    <div class="row mb-3">
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="submit" class="btn btn-success btn-lg me-2">Salvar Cliente</button>
+                        <a href="index.html" class="btn btn-secondary btn-lg">Cancelar</a>
+                    </div>
+                </form>
+    </div>
+ 
+    <!-- Cards de Acesso Rápido -->
+ 
+ 
+    <!-- Tabela de Clientes -->
+    <h2 class="mt-5 mb-3">Lista de Clientes Cadastrados</h2>
+    <div class="carta">
+        <table class="table table-striped table-hover align-middle shadow-sm">
+            <thead>
+                <tr class="table-primary">
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome do Cliente</th>
+                    <th scope="col">CPF/CNPJ</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Última Atualização</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">101</th>
+                    <td>Transportadora Ágil LTDA</td>
+                    <td>12.345.678/0001-90</td>
+                    <td><span class="badge bg-success">Ativo</span></td>
+                    <td>25/11/2025</td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-info text-white me-1">Ver</a>
+                        <a href="#" class="btn btn-sm btn-warning me-1">Editar</a>
+                        <button class="btn btn-sm btn-danger">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">102</th>
+                    <td>Distribuidora Oeste S.A.</td>
+                    <td>98.765.432/0001-00</td>
+                    <td><span class="badge bg-warning text-dark">Pendente</span></td>
+                    <td>18/11/2025</td>
+                    <td>
+                        <a href="#" class="btn btn-sm btn-info text-white me-1">Ver</a>
+                        <a href="#" class="btn btn-sm btn-warning me-1">Editar</a>
+                        <button class="btn btn-sm btn-danger">Excluir</button>
+                    </td>
+                </tr>
+                <!-- Mais linhas seriam carregadas aqui do seu sistema -->
+            </tbody>
+        </table>
+    </div>
+</main>
+<style>
+    /* ==================== GLOBAL ==================== */
+    /* ==================== GLOBAL ==================== */
+body {
+    background-image: url('https://img.freepik.com/vetores-premium/um-grafico-de-pessoas-subindo-em-um-grafico_9206-8921.jpg'); /* imagem enviada */
+    background-size: cover;        /* preenche toda a tela */
+    background-repeat: no-repeat;  /* não repete */
+    background-position: center;   /* centraliza */
+    background-attachment: fixed;  /* fixa o fundo ao rolar */
+}
+ 
+.container {
+    max-width: 1300px;
+}
+ 
+/* ==================== JUMBOTRON ==================== */
+.jumbotron {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 3rem 3rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border-left: 6px solid #0d6832;
+}
+ 
+.jumbotron .display-4 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #0d6832;
+}
+ 
+.jumbotron p.lead {
+    font-size: 1.1rem;
+    color: #333;
+}
+ 
+/* ==================== FORM ==================== */
+.form-label {
+    font-weight: 600;
+    color: #000000;
+}
+ 
+.form-control,
+.form-select {
+    border-radius: 10px;
+    border: 1px solid #c9d5c9;
+}
+ 
+.form-control:focus,
+.form-select:focus {
+    border-color: #0d6832;
+    box-shadow: 0 0 0 0.15rem rgba(13, 104, 50, 0.25);
+}
+ 
+/* ==================== TABELA ==================== */
+table {
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+ 
+.table thead {
+    font-weight: bold;
+}
+ 
+.table thead tr {
+    background-color: #0d6832 !important; /* Cor Logtec */
+    color: #fff;
+    font-size: 1rem;
+}
+ 
+.table-hover tbody tr:hover {
+    background-color: #edf7f0; /* Verde bem claro */
+    transition: 0.2s ease;
+}
+ 
+/* BADGES */
+.badge {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+}
+ 
+.bg-success {
+    background-color: #0d6832 !important;
+}
+ 
+.bg-warning {
+    background-color: #ffcf4d !important;
+    color: #4e3900 !important;
+}
+ 
+/* ==================== BOTÕES ==================== */
+.btn-success {
+    background-color: #0d6832;
+    border: none;
+}
+ 
+.btn-success:hover {
+    background-color: #095224;
+}
+ 
+.btn-secondary {
+    background-color: #6c757d;
+}
+ 
+.btn-info {
+    background-color: #1b76d1;
+    border: none;
+}
+ 
+.btn-info:hover {
+    background-color: #165fa7;
+}
+ 
+.btn-warning {
+    background-color: #f4b731;
+    border: none;
+    color: #000 !important;
+}
+ 
+.btn-danger {
+    background-color: #d93b3b;
+    border: none;
+}
+ 
+/* ==================== CARD WRAPPER ==================== */
+.carta {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+}
+ 
+/* ==================== RESPONSIVIDADE ==================== */
+ 
+}
+ 
+ 
+body {
+    background-image: url('/img/imagem-de-fundo-do-site.png'); /* caminho da imagem */
+    background-size: cover;        /* preenche toda a tela */
+    background-repeat: no-repeat;  /* não repete */
+    background-position: center;   /* centraliza */
+    background-attachment: fixed;  /* fixa o fundo ao rolar */
+    opacity: 1;
+}
+ 
+/* Garantir que o conteúdo fique legível */
+.container, main, section, div, .jumbotron {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(2px);
+    border-radius: 10px;
+    padding: 15px;
+}
+</style>
