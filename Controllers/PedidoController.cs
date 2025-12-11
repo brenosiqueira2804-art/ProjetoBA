@@ -53,4 +53,19 @@ namespace ProjetoBA.Controllers
             return RedirectToAction("Index");
         }
     }
+
+    [HttpPost]
+        // Exemplo de uma Action para "Cadastrar" (se o botão CadastrarClientes apontar para '/Clientes/Cadastrar')
+        public IActionResult Cadastrar(Pedido pedido)
+        {
+
+            pedido.UsuarioId = int.Parse(HttpContext.Session.GetString("Usuario"));
+
+            _context.Add(pedido);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index"); // Isso procurará o arquivo "Cadastrar.cshtml" na pasta Views/Cliente
+        }
+    }
 }
