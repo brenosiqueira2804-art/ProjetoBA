@@ -14,14 +14,16 @@ public class ClienteController : Controller
     // A convenção no ASP.NET Core MVC é usar "Index" como a Action principal.
     public IActionResult Index()
     {
- 
+        var listaClientes = context.Clientes.ToList();
+
+        ViewBag.ListaClientes = listaClientes;
         // 1. **Executar a Lógica C# (Model)**:
         // Aqui você chamaria o código C# para buscar a lista de clientes no banco de dados.
         // Exemplo: List<Cliente> listaClientes = _repositorio.ObterTodosClientes();
- 
+
         // 2. **Passar os Dados para a View**:
         // return View(listaClientes); // Se você passou dados
- 
+
         // 3. **Retornar a View (HTML)**:
         return View(); // Isso procurará o arquivo "Index.cshtml" na pasta Views/Cliente
     }
