@@ -90,7 +90,7 @@
 <!-- FORMULÁRIO + TABELA LADO A LADO -->
 <!-- ======================================================= -->
 
-<div class="container mt-4">
+<div class="p-5 mt-4">
     <div class="row g-4">
 
         <!-- ==================== COLUNA ESQUERDA - FORM ==================== -->
@@ -103,84 +103,54 @@
 
                 <div class="card-body">
 
-                    <form>
+                    <form asp-action="SalvarPedido" asp-controller="Pedido">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Cliente solicitante</label>
+                                <select class="form-select" name="ClienteId">
+                                    <option selected>Selecione...</option>
+
+                                    @if (ViewBag.ListaClientes != null && ViewBag.ListaClientes.Count > 0)
+                                    {
+                                        @foreach (Cliente cliente in ViewBag.ListaClientes)
+                                        {
+                                            <option value="@cliente.Id">@cliente.Razaosocial</option>
+                                        }
+
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold">Código pedido</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label class="form-label fw-semibold">Nome Completo / Razão Social</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Tipo de Cadastro</label>
-                                <select class="form-select">
+                                <label class="form-label fw-semibold">Produtos(o)</label>
+                                <select class="form-select" name="ProdutoId">
                                     <option selected>Selecione...</option>
-                                    <option value="1">Pessoa Física</option>
-                                    <option value="2">Pessoa Jurídica</option>
+                                    @if (ViewBag.ListaProdutos != null && ViewBag.ListaProdutos.Count > 0)
+                                    {
+                                        @foreach (Produto produto in ViewBag.ListaProdutos)
+                                        {
+                                            <option value="@produto.Id">@produto.Nomeproduto</option>
+                                        }
+
+                                    }
                                 </select>
                             </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">CPF / CNPJ</label>
-                                <input type="text" class="form-control">
-                            </div>
 
                             <div class="col-md-6">
-                                <label class="form-label fw-semibold">E-mail</label>
-                                <input type="email" class="form-control">
+                                <label class="form-label fw-semibold">Quantidade</label>
+                                <input type="number" class="form-control" name="Quantidade">
                             </div>
                         </div>
 
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Telefone</label>
-                                <input type="text" class="form-control">
-                            </div>
 
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Lista dos clientes</label>
-                                <select class="form-select" name="cliente">
-                                    <option selected>Selecione...</option>
-                                    <option value="1">Atacado</option>
-                                    <option value="2">Único</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <label class="form-label fw-semibold">Valor do Pedido</label>
-                                <input type="text" class="form-control" name="Valor" id="valorPedido"
-                                    placeholder="R$ 0,00">
-                            </div>
-                        </div>
-
-                        <script>
-                            const campo = document.getElementById('valorPedido');
-
-                            campo.addEventListener('input', function () {
-                                let valor = campo.value.replace(/\D/g, "");
-                                valor = (valor / 100).toFixed(2).split(".");
-                                valor[0] = valor[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-                                campo.value = "R$ " + valor.join(",");
-                            });
-                        </script>
-
-                        <a asp-controller="Pedido" asp-action="Index"
-                            class="btn btn-primary px-4 me-2 fw-bold shadow-sm">
-                            Salvar<br>Pedido
-                        </a>
-
-                         @* <button type="submit" class="btn btn-success px-4 me-2 fw-bold shadow-sm">
-                            Salvar<br>Pedido
-                        </button> *@
-
-                        <button type="button" class="btn btn-secondary px-4 fw-bold shadow-sm">
-                            Cancelar
-                        </button>
-
+                        <button class="btn btn-success" type="submit">Realizar pedido</button>
                     </form>
 
                 </div>
@@ -207,92 +177,31 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>001</td>
-                                <td>Maria Silva</td>
-                                <td>12/01/2025</td>
-                                <td>R$ 150,00</td>
-                                <td><span class="badge bg-primary">Feito</span></td>
-                            </tr>
-                            <tr>
-                                <td>002</td>
-                                <td>Carlos Alberto</td>
-                                <td>13/01/2025</td>
-                                <td>R$ 299,99</td>
-                                <td><span class="badge bg-primary">Feito</span></td>
-                            </tr>
-                            <tr>
-                                <td>003</td>
-                                <td>Rafaela Sousa</td>
-                                <td>14/01/2025</td>
-                                <td>R$ 510,00</td>
-                                <td><span class="badge bg-primary">Feito</span></td>
-                            </tr>
-                            <tr>
-                                <td>004</td>
-                                <td>João Pedro</td>
-                                <td>10/01/2025</td>
-                                <td>R$ 85,90</td>
-                                <td><span class="badge bg-warning text-dark">Em Trânsito</span></td>
-                            </tr>
-                            <tr>
-                                <td>005</td>
-                                <td>Lorena Matos</td>
-                                <td>11/01/2025</td>
-                                <td>R$ 230,00</td>
-                                <td><span class="badge bg-warning text-dark">Em Trânsito</span></td>
-                            </tr>
-                            <tr>
-                                <td>006</td>
-                                <td>Fernando Oliveira</td>
-                                <td>05/01/2025</td>
-                                <td>R$ 430,00</td>
-                                <td><span class="badge bg-success">Concluído</span></td>
-                            </tr>
-                            <tr>
-                                <td>007</td>
-                                <td>Juliana Rocha</td>
-                                <td>06/01/2025</td>
-                                <td>R$ 99,90</td>
-                                <td><span class="badge bg-success">Concluído</span></td>
-                            </tr>
-                            <tr>
-                                <td>008</td>
-                                <td>Pedro Henrique</td>
-                                <td>07/01/2025</td>
-                                <td>R$ 180,00</td>
-                                <td><span class="badge bg-danger">Cancelado</span></td>
-                            </tr>
-                            <tr>
-                                <td>009</td>
-                                <td>Patrícia Xavier</td>
-                                <td>09/01/2025</td>
-                                <td>R$ 540,00</td>
-                                <td><span class="badge bg-danger">Cancelado</span></td>
-                            </tr>
-                            <tr>
-                                <td>010</td>
-                                <td>Lucas Almeida</td>
-                                <td>15/01/2025</td>
-                                <td>R$ 1.200,00</td>
-                                <td><span class="badge bg-primary">Feito</span></td>
-                            </tr>
-                            <tr>
-                                <td>011</td>
-                                <td>Ana Beatriz</td>
-                                <td>15/01/2025</td>
-                                <td>R$ 320,00</td>
-                                <td><span class="badge bg-warning text-dark">Em Trânsito</span></td>
-                            </tr>
-                            <tr>
-                                <td>012</td>
-                                <td>Diego Martins</td>
-                                <td>16/01/2025</td>
-                                <td>R$ 280,00</td>
-                                <td><span class="badge bg-success">Concluído</span></td>
-                            </tr>
+                            @if(ViewBag.ListaPedidos != null && ViewBag.ListaPedidos.Count > 0)
+                            {
+                                @foreach(Pedido pedido in ViewBag.ListaPedidos)
+                                {
+                                    <tr>
+                                        <td>@pedido.Id</td>
+                                        <td>@pedido.Cliente.Razaosocial</td>
+                                        <td>@pedido.DataPedido?.ToString("dd/MM/yyyy")</td>
+                                        <td>R$ @pedido.Valor</td>
+                                        <td>
+                                            @if(pedido.Status == "F")
+                                            {
+                                                <span class="badge bg-primary">Feito</span>
+                                            }else if(pedido.Status == "V")
+                                            {
+                                                <span class="badge bg-warning">Validado</span>
+                                            }else{
+                                                <span class="badge bg-success">Concluido</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            
                         </tbody>
-
                     </table>
                 </div>
             </div>

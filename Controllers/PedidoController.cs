@@ -10,6 +10,7 @@ namespace ProjetoBA.Controllers
     {
         ProjetoContext _context = new ProjetoContext();
 
+        [Route("Pedido")]
         public IActionResult Index()
         {
             var listaClientes = _context.Clientes.ToList();
@@ -19,7 +20,7 @@ namespace ProjetoBA.Controllers
             ViewBag.ListaProdutos = listaProdutos;
 
             var listaPedidos = _context.Pedidos.ToList();
-            ViewBag.ListaEquipes = listaPedidos;
+            ViewBag.ListaPedidos = listaPedidos;
 
             return View();
         }
@@ -27,24 +28,14 @@ namespace ProjetoBA.Controllers
         [HttpPost]
         public IActionResult SalvarPedido(Pedido pedido)
         {
-            if (ModelState.IsValid)
-            {
-                pedido.DataPedido = DateTime.Now;
-                pedido.Status = "F";
-
-                _context.Pedidos.Add(pedido);
-                _context.SaveChanges();
-            }
-
-            return RedirectToAction("Index");
-        }
-
-        // ← ESTE MÉTODO PRECISA ESTAR AQUI DENTRO DA CLASSE
-        [HttpPost]
-        public IActionResult Cadastrar(Pedido pedido)
-        {
+            Produto produto = _context.Produtos.FirstOrDefault(x => x.Id == pedido.ProdutoId);
             pedido.UsuarioId = int.Parse(HttpContext.Session.GetString("Usuario"));
+            pedido.DataPedido = DateTime.Now;
+            pedido.Valor = produto.Preco * pedido.Quantidade;
+            pedido.Status = "F";
+
             _context.Add(pedido);
+
             _context.SaveChanges();
 
             return RedirectToAction("Index");
